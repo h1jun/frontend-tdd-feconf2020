@@ -1,5 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import { render } from '@testing-library/react';
+import { render } from "@testing-library/react";
 
-import App from './App';
+import App from "./App";
+
+describe("App", () => {
+  it("renders tasks", () => {
+    const { container } = render(<App />);
+    expect(container).toHaveTextContent("아무 일도 하기 싫다");
+  });
+});
