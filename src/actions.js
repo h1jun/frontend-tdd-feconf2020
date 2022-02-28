@@ -1,3 +1,5 @@
+import { fetchTasks } from "./services/api";
+
 export function setTasks(tasks) {
   return {
     type: "setTasks",
@@ -9,9 +11,16 @@ export function setTasks(tasks) {
 
 export function deleteTasks(id) {
   return {
-    task: "deleteTask",
+    type: "deleteTask",
     payload: {
       id,
     },
+  };
+}
+
+export function loadTasks() {
+  return async (dispatch) => {
+    const tasks = await fetchTasks();
+    dispatch(setTasks(tasks.slice(0, 10)));
   };
 }
