@@ -7,4 +7,11 @@ export function setTasks(tasks) {
   };
 }
 
-export default {};
+export function deleteTasks(id) {
+  return {
+    task: "deleteTask",
+    payload: {
+      id,
+    },
+  };
+}
