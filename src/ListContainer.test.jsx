@@ -1,28 +1,23 @@
 import React from "react";
-
 import { useSelector } from "react-redux";
 
 import { render } from "@testing-library/react";
 
-import App from "./App";
+import ListContainer from "./ListContainer";
 
 import tasks from "../fixtures/tasks";
-import { useDispatch } from "../__mocks__/react-redux";
 
 jest.mock("react-redux");
 
 describe("App", () => {
-  const dispatch = jest.fn();
-
-  useDispatch.mockImplementation(() => dispatch);
-
+  //useSelector는 가짜로 동작해서 아래와 같은 상태를 돌려준다.
   useSelector.mockImplementation((selector) =>
     selector({
       tasks,
     })
   );
   it("renders tasks", () => {
-    const { container } = render(<App />);
+    const { container } = render(<ListContainer />);
     expect(container).toHaveTextContent("아무 일도 하기 싫다");
   });
 });
